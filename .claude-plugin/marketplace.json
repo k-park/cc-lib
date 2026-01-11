@@ -5,7 +5,7 @@
   },
   "metadata": {
     "description": "Collection of Claude Code plugins for development productivity",
-    "version": "1.5.0",
+    "version": "2.0.0",
     "pluginRoot": "./plugins"
   },
   "plugins": [
@@ -58,6 +58,45 @@
       },
       "category": "quality",
       "tags": ["review", "code-quality", "security", "architecture", "documentation", "commits"],
+      "license": "MIT",
+      "repository": "https://github.com/k-park/cc-lib"
+    },
+    {
+      "name": "feat",
+      "source": "./plugins/feat",
+      "description": "Feature development agents for design, implementation planning, and scaffolding",
+      "version": "1.0.0",
+      "author": {
+        "name": "k-park"
+      },
+      "category": "development",
+      "tags": ["feature", "design", "implementation", "scaffolding"],
+      "license": "MIT",
+      "repository": "https://github.com/k-park/cc-lib"
+    },
+    {
+      "name": "docu",
+      "source": "./plugins/docu",
+      "description": "Documentation agents for generating docs, README files, and explaining code",
+      "version": "1.0.0",
+      "author": {
+        "name": "k-park"
+      },
+      "category": "documentation",
+      "tags": ["documentation", "readme", "api-docs", "code-explanation"],
+      "license": "MIT",
+      "repository": "https://github.com/k-park/cc-lib"
+    },
+    {
+      "name": "fix",
+      "source": "./plugins/fix",
+      "description": "Refactoring and debugging agents for code cleaning and bug fixing",
+      "version": "1.0.0",
+      "author": {
+        "name": "k-park"
+      },
+      "category": "development",
+      "tags": ["refactoring", "debugging", "code-cleaning", "bug-fixing"],
       "license": "MIT",
       "repository": "https://github.com/k-park/cc-lib"
     }

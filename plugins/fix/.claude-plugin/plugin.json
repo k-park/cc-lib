@@ -1,0 +1,12 @@
+{
+  "name": "fix",
+  "version": "1.0.0",
+  "description": "Refactoring and debugging agents for code cleaning and bug fixing",
+  "author": {
+    "name": "cc-lib"
+  },
+  "agents": [
+    "./agents/clean.md",
+    "./agents/debug.md"
+  ]
+}

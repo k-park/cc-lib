@@ -1,0 +1,13 @@
+{
+  "name": "docu",
+  "version": "1.0.0",
+  "description": "Documentation agents for generating docs, README files, and explaining code",
+  "author": {
+    "name": "cc-lib"
+  },
+  "agents": [
+    "./agents/gen.md",
+    "./agents/readme.md",
+    "./agents/explain.md"
+  ]
+}
