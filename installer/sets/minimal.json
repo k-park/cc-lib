@@ -1,0 +1,18 @@
+{
+  "$schema": "../schemas/installation-set.schema.json",
+  "name": "minimal",
+  "version": "1.0.0",
+  "description": "Minimal agent set for basic usage",
+  "environment": "pc",
+  "agents": [
+    {
+      "path": "orchestration/task-orchestrator",
+      "enabled": true
+    }
+  ],
+  "settings": {
+    "defaultModel": "sonnet",
+    "maxParallelTasks": 5,
+    "timeout": 300
+  }
+}

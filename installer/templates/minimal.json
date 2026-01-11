@@ -1,0 +1,10 @@
+{
+  "$schema": "../schemas/settings.schema.json",
+  "version": "1.0",
+  "agents": [],
+  "defaults": {
+    "model": "sonnet",
+    "temperature": 0.7,
+    "maxTokens": 4000
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "$schema": "../schemas/settings.schema.json",
+  "version": "1.0",
+  "agents": [
+    {
+      "name": "task-orchestrator",
+      "path": "env-pc/agents/task-orchestrator.md",
+      "enabled": true
+    },
+    {
+      "name": "parallel-task-orchestrator",
+      "path": "env-pc/agents/parallel-task-orchestrator.md",
+      "enabled": true
+    }
+  ],
+  "defaults": {
+    "model": "sonnet",
+    "temperature": 0.7,
+    "maxTokens": 4000
+  }
+}

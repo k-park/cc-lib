@@ -1,0 +1,22 @@
+{
+  "$schema": "../schemas/installation-set.schema.json",
+  "name": "mobile-basic",
+  "version": "1.0.0",
+  "description": "Essential agents for mobile development with limited resources",
+  "environment": "mob",
+  "agents": [
+    {
+      "path": "orchestration/task-orchestrator",
+      "enabled": true
+    },
+    {
+      "path": "orchestration/parallel-task-orchestrator",
+      "enabled": true
+    }
+  ],
+  "settings": {
+    "defaultModel": "sonnet",
+    "maxParallelTasks": 3,
+    "timeout": 180
+  }
+}

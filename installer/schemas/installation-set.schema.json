@@ -1,0 +1,98 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Installation Set Schema",
+  "type": "object",
+  "required": ["name", "version", "description", "environment", "agents"],
+  "properties": {
+    "name": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+      "description": "Installation set identifier in kebab-case"
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$",
+      "description": "Semantic version following SemVer 2.0.0"
+    },
+    "description": {
+      "type": "string",
+      "minLength": 10,
+      "maxLength": 200,
+      "description": "Human-readable description of the installation set"
+    },
+    "environment": {
+      "type": "string",
+      "enum": ["mob", "pc", "srv"],
+      "description": "Target environment for this installation set"
+    },
+    "agents": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["path"],
+        "properties": {
+          "path": {
+            "type": "string",
+            "pattern": "^[a-z0-9]+(-[a-z0-9]+)*/[a-z0-9]+(-[a-z0-9]+)*$",
+            "description": "Agent path in format {category}/{agent-name}"
+          },
+          "enabled": {
+            "type": "boolean",
+            "default": true,
+            "description": "Whether the agent is enabled by default"
+          },
+          "config": {
+            "type": "object",
+            "description": "Agent-specific configuration overrides",
+            "properties": {
+              "max_parallel_tasks": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 100
+              },
+              "timeout": {
+                "type": "integer",
+                "minimum": 10,
+                "maximum": 3600
+              },
+              "temperature": {
+                "type": "number",
+                "minimum": 0.0,
+                "maximum": 1.0
+              },
+              "max_tokens": {
+                "type": "integer",
+                "minimum": 100,
+                "maximum": 200000
+              }
+            }
+          }
+        }
+      },
+      "description": "List of agents to include in this installation set"
+    },
+    "settings": {
+      "type": "object",
+      "description": "Global settings for this installation set",
+      "properties": {
+        "defaultModel": {
+          "type": "string",
+          "enum": ["sonnet", "haiku", "opus"],
+          "default": "sonnet"
+        },
+        "maxParallelTasks": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 100,
+          "default": 5
+        },
+        "timeout": {
+          "type": "integer",
+          "minimum": 10,
+          "maximum": 3600,
+          "default": 300
+        }
+      }
+    }
+  }
+}

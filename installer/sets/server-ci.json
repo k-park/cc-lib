@@ -1,0 +1,22 @@
+{
+  "$schema": "../schemas/installation-set.schema.json",
+  "name": "server-ci",
+  "version": "1.0.0",
+  "description": "Optimized for server CI/CD pipelines and automation",
+  "environment": "srv",
+  "agents": [
+    {
+      "path": "orchestration/task-orchestrator",
+      "enabled": true
+    },
+    {
+      "path": "orchestration/parallel-task-orchestrator",
+      "enabled": true
+    }
+  ],
+  "settings": {
+    "defaultModel": "haiku",
+    "maxParallelTasks": 20,
+    "timeout": 600
+  }
+}

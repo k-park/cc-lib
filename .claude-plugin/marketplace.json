@@ -1,0 +1,26 @@
+{
+  "name": "cc-lib",
+  "owner": {
+    "name": "k-park"
+  },
+  "metadata": {
+    "description": "Collection of Claude Code plugins for development productivity",
+    "version": "1.0.0",
+    "pluginRoot": "./plugins"
+  },
+  "plugins": [
+    {
+      "name": "orchestration",
+      "source": "./plugins/orchestration",
+      "description": "Agent orchestration plugins for complex multi-faceted tasks with parallel execution",
+      "version": "1.0.0",
+      "author": {
+        "name": "k-park"
+      },
+      "category": "productivity",
+      "tags": ["orchestration", "parallel", "agents", "task-management"],
+      "license": "MIT",
+      "repository": "https://github.com/k-park/cc-lib"
+    }
+  ]
+}

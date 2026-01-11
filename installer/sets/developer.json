@@ -1,0 +1,22 @@
+{
+  "$schema": "../schemas/installation-set.schema.json",
+  "name": "developer",
+  "version": "1.0.0",
+  "description": "Full-featured development environment for PC users",
+  "environment": "pc",
+  "agents": [
+    {
+      "path": "orchestration/task-orchestrator",
+      "enabled": true
+    },
+    {
+      "path": "orchestration/parallel-task-orchestrator",
+      "enabled": true
+    }
+  ],
+  "settings": {
+    "defaultModel": "sonnet",
+    "maxParallelTasks": 10,
+    "timeout": 300
+  }
+}
