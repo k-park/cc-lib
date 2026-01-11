@@ -1,0 +1,12 @@
+{
+  "name": "ralph",
+  "version": "1.0.0",
+  "description": "Autonomous iterative development loop - RALPH (Recursively Adaptive Loop for Progressive Habitability). Keep Claude Code working until completion.",
+  "author": {
+    "name": "cc-lib"
+  },
+  "commands": [
+    "./commands/go.md",
+    "./commands/stop.md"
+  ]
+}
