@@ -1,7 +1,7 @@
 # cc-lib Plugin Installation Report
 
 **Date**: 2026-01-12
-**Version**: 2.0.0
+**Version**: 2.1.0
 **Status**: ✅ All plugins installed and verified
 
 ---
@@ -54,9 +54,9 @@ cc-lib marketplace with 7 plugins (excluding ralph for verification scope).
 
 ---
 
-### 3. review (Code Review)
+### 3. revu (Code Review)
 
-**Source**: `./plugins/review`
+**Source**: `./plugins/revu`
 
 | Agent | File | Model | Purpose |
 |-------|------|-------|---------|
@@ -67,7 +67,7 @@ cc-lib marketplace with 7 plugins (excluding ralph for verification scope).
 | commit | commit.md | sonnet | Commit message review |
 
 **Validation**: ✅ Passed
-**Installation**: ✅ `/home/k/.claude/plugins/cache/cc-lib/review/1.0.0/`
+**Installation**: ✅ `/home/k/.claude/plugins/cache/cc-lib/revu/1.0.0/`
 
 ---
 
@@ -135,7 +135,7 @@ cc-lib marketplace with 7 plugins (excluding ralph for verification scope).
 {
   "orch@cc-lib": "1.0.0",
   "test@cc-lib": "1.0.0",
-  "review@cc-lib": "1.0.0",
+  "revu@cc-lib": "1.0.0",
   "feat@cc-lib": "1.0.0",
   "docu@cc-lib": "1.0.0",
   "fix@cc-lib": "1.0.0"
@@ -148,7 +148,7 @@ cc-lib marketplace with 7 plugins (excluding ralph for verification scope).
 
 ```bash
 # Validate all plugins
-for plugin in orch test review feat docu fix; do
+for plugin in orch test revu feat docu fix; do
   claude plugin validate "/home/k/g/gh/k-park/cc-lib/plugins/$plugin"
 done
 
@@ -177,7 +177,7 @@ claude plugin uninstall <plugin>@cc-lib
 @agent-test-fix "Fix failing tests"
 
 # Review
-@agent-review-code "Review this PR"
+@agent-revu-code "Review this PR"
 @agent-review-arch "Review system architecture"
 @agent-review-sec "Security review"
 @agent-review-commit "Check commit message"

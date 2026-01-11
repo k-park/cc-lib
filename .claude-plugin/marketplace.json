@@ -5,7 +5,7 @@
   },
   "metadata": {
     "description": "Collection of Claude Code plugins for development productivity",
-    "version": "2.0.0",
+    "version": "2.1.0",
     "pluginRoot": "./plugins"
   },
   "plugins": [
@@ -49,8 +49,8 @@
       "repository": "https://github.com/k-park/cc-lib"
     },
     {
-      "name": "review",
-      "source": "./plugins/review",
+      "name": "revu",
+      "source": "./plugins/revu",
       "description": "Code review plugins for quality, security, architecture, documentation, and commit message assessment",
       "version": "1.0.0",
       "author": {
