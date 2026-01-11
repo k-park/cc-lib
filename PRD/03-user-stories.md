@@ -161,3 +161,9 @@
 
 - [User Story Template](https://www.mountaingoatsoftware.com/blog/user-story-template/)
 - [Acceptance Criteria Guide](https://www.atlassian.com/work-management/project-management/acceptance-criteria)
+
+---
+
+## Document Navigation
+
+**[← User Personas](./02-user-personas.md)** | **[PRD Index](./00-index.md)** | **[Next: Functional Requirements →](./04-functional-requirements.md)**

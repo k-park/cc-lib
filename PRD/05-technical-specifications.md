@@ -275,3 +275,9 @@ cc-lib는 Claude Code의 표준 플러그인 API를 따릅니다:
 
 - [Claude Code Plugin Reference](https://code.claude.com/docs/en/plugins-reference)
 - [Claude Code Settings](https://code.claude.com/docs/en/settings)
+
+---
+
+## Document Navigation
+
+**[← Functional Requirements](./04-functional-requirements.md)** | **[PRD Index](./00-index.md)** | **[Next: Acceptance Criteria →](./06-acceptance-criteria.md)**

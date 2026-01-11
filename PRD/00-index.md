@@ -10,15 +10,43 @@ This is the Product Requirements Document (PRD) for cc-lib, a Claude Code plugin
 
 ## Document Structure
 
-| Document | Description | Status |
-|----------|-------------|--------|
-| [01 - Problem Statement](./01-problem-statement.md) | Problems, opportunities, goals, and success metrics | Draft |
-| [02 - User Personas](./02-user-personas.md) | Target user profiles and use cases | Draft |
-| [03 - User Stories](./03-user-stories.md) | User stories organized by epics | Draft |
-| [04 - Functional Requirements](./04-functional-requirements.md) | Detailed functional requirements | Draft |
-| [05 - Technical Specifications](./05-technical-specifications.md) | System architecture, data models, API specs | Draft |
-| [06 - Acceptance Criteria](./06-acceptance-criteria.md) | Given-When-Then acceptance criteria | Draft |
-| [07 - Architecture](./07-architecture.md) | System architecture diagrams and design decisions | Draft |
+```mermaid
+graph TD
+    IDX["00-index.md<br/>(This Document)"]
+    PS["01-problem-statement.md<br/>Problem & Goals"]
+    UP["02-user-personas.md<br/>Target Users"]
+    US["03-user-stories.md<br/>User Stories"]
+    FR["04-functional-requirements.md<br/>Features"]
+    TS["05-technical-specifications.md<br/>Technical Specs"]
+    AC["06-acceptance-criteria.md<br/>Acceptance Tests"]
+    ARCH["07-architecture.md<br/>System Design"]
+
+    IDX --> PS
+    IDX --> UP
+    IDX --> US
+    IDX --> FR
+    IDX --> TS
+    IDX --> AC
+    IDX --> ARCH
+
+    PS --> UP
+    UP --> US
+    US --> FR
+    FR --> TS
+    TS --> ARCH
+    FR --> AC
+    ARCH --> TS
+```
+
+| Document | Description | Status | Related Docs |
+|----------|-------------|--------|--------------|
+| [01 - Problem Statement](./01-problem-statement.md) | Problems, opportunities, goals, and success metrics | Draft | → [User Personas](./02-user-personas.md) |
+| [02 - User Personas](./02-user-personas.md) | Target user profiles and use cases | Draft | ← [Problem](./01-problem-statement.md) → [User Stories](./03-user-stories.md) |
+| [03 - User Stories](./03-user-stories.md) | User stories organized by epics | Draft | ← [Personas](./02-user-personas.md) → [Functional Requirements](./04-functional-requirements.md) |
+| [04 - Functional Requirements](./04-functional-requirements.md) | Detailed functional requirements | Draft | ← [User Stories](./03-user-stories.md) → [Technical Specs](./05-technical-specifications.md), [Acceptance Criteria](./06-acceptance-criteria.md) |
+| [05 - Technical Specifications](./05-technical-specifications.md) | System architecture, data models, API specs | Draft | ← [Functional Requirements](./04-functional-requirements.md) ↔ [Architecture](./07-architecture.md) |
+| [06 - Acceptance Criteria](./06-acceptance-criteria.md) | Given-When-Then acceptance criteria | Draft | ← [Functional Requirements](./04-functional-requirements.md) |
+| [07 - Architecture](./07-architecture.md) | System architecture diagrams and design decisions | Draft | ← [Technical Specs](./05-technical-specifications.md) |
 
 ## Quick Navigation
 

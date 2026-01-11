@@ -206,3 +206,9 @@
 ## References
 
 - [Acceptance Criteria Guide](https://www.atlassian.com/work-management/project-management/acceptance-criteria)
+
+---
+
+## Document Navigation
+
+**[← Technical Specifications](./05-technical-specifications.md)** | **[PRD Index](./00-index.md)** | **[Next: Architecture →](./07-architecture.md)**

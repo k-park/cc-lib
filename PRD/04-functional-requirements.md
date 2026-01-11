@@ -108,3 +108,9 @@ cc-lib의 기능적 요구사항을 정의합니다.
 ## References
 
 - [Functional Requirements Template](https://www.reqtest.com/functional-requirements/)
+
+---
+
+## Document Navigation
+
+**[← User Stories](./03-user-stories.md)** | **[PRD Index](./00-index.md)** | **[Next: Technical Specifications →](./05-technical-specifications.md)**

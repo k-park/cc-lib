@@ -262,3 +262,9 @@ graph TB
 
 - [Claude Code Plugin Architecture](https://code.claude.com/docs/en/plugins)
 - [Microservices Architecture Patterns](https://martinfowler.com/articles/microservices.html)
+
+---
+
+## Document Navigation
+
+**[← Acceptance Criteria](./06-acceptance-criteria.md)** | **[PRD Index](./00-index.md)**
