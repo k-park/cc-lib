@@ -5,7 +5,7 @@
   },
   "metadata": {
     "description": "Collection of Claude Code plugins for development productivity",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "pluginRoot": "./plugins"
   },
   "plugins": [
@@ -19,6 +19,19 @@
       },
       "category": "productivity",
       "tags": ["orchestration", "parallel", "agents", "task-management"],
+      "license": "MIT",
+      "repository": "https://github.com/k-park/cc-lib"
+    },
+    {
+      "name": "testing",
+      "source": "./plugins/testing",
+      "description": "Test generation, execution, and failure resolution with complete test-fix loop support",
+      "version": "1.0.0",
+      "author": {
+        "name": "k-park"
+      },
+      "category": "quality",
+      "tags": ["testing", "test-generation", "test-fix", "tdd", "coverage"],
       "license": "MIT",
       "repository": "https://github.com/k-park/cc-lib"
     }

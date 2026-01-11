@@ -1,0 +1,13 @@
+{
+  "name": "testing",
+  "version": "1.0.0",
+  "description": "Test generation, execution, and failure resolution with complete test-fix loop support",
+  "author": {
+    "name": "cc-lib"
+  },
+  "agents": [
+    "./agents/gen.md",
+    "./agents/run.md",
+    "./agents/fix.md"
+  ]
+}
