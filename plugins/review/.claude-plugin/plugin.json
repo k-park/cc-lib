@@ -1,0 +1,11 @@
+{
+  "name": "review",
+  "version": "1.0.0",
+  "description": "Code review plugins for quality, security, architecture, and documentation assessment",
+  "author": {
+    "name": "cc-lib"
+  },
+  "agents": [
+    "./agents/code.md"
+  ]
+}
