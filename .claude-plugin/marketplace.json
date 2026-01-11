@@ -5,25 +5,25 @@
   },
   "metadata": {
     "description": "Collection of Claude Code plugins for development productivity",
-    "version": "1.1.0",
+    "version": "1.2.0",
     "pluginRoot": "./plugins"
   },
   "plugins": [
     {
-      "name": "orchestration",
+      "name": "orch",
       "source": "./plugins/orchestration",
-      "description": "Agent orchestration plugins for complex multi-faceted tasks with parallel execution",
+      "description": "Agent orchestration for complex multi-faceted tasks with parallel execution and context management",
       "version": "1.0.0",
       "author": {
         "name": "k-park"
       },
       "category": "productivity",
-      "tags": ["orchestration", "parallel", "agents", "task-management"],
+      "tags": ["orchestration", "parallel", "context", "agents", "task-management"],
       "license": "MIT",
       "repository": "https://github.com/k-park/cc-lib"
     },
     {
-      "name": "testing",
+      "name": "test",
       "source": "./plugins/testing",
       "description": "Test generation, execution, and failure resolution with complete test-fix loop support",
       "version": "1.0.0",
