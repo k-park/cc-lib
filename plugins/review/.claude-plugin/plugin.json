@@ -6,6 +6,10 @@
     "name": "cc-lib"
   },
   "agents": [
-    "./agents/code.md"
+    "./agents/code.md",
+    "./agents/arch.md",
+    "./agents/sec.md",
+    "./agents/doc.md",
+    "./agents/commit.md"
   ]
 }
