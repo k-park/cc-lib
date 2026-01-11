@@ -9,5 +9,10 @@
     "./agents/gen.md",
     "./agents/run.md",
     "./agents/fix.md"
+  ],
+  "commands": [
+    "./commands/gen.md",
+    "./commands/run.md",
+    "./commands/fix.md"
   ]
 }

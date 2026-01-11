@@ -9,5 +9,10 @@
     "./agents/gen.md",
     "./agents/readme.md",
     "./agents/explain.md"
+  ],
+  "commands": [
+    "./commands/gen.md",
+    "./commands/readme.md",
+    "./commands/explain.md"
   ]
 }

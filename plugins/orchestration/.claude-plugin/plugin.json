@@ -9,5 +9,10 @@
     "./agents/task.md",
     "./agents/parallel.md",
     "./agents/context.md"
+  ],
+  "commands": [
+    "./commands/task.md",
+    "./commands/parallel.md",
+    "./commands/context.md"
   ]
 }

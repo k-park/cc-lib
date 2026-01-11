@@ -8,5 +8,9 @@
   "agents": [
     "./agents/clean.md",
     "./agents/debug.md"
+  ],
+  "commands": [
+    "./commands/clean.md",
+    "./commands/debug.md"
   ]
 }

@@ -11,5 +11,12 @@
     "./agents/sec.md",
     "./agents/doc.md",
     "./agents/commit.md"
+  ],
+  "commands": [
+    "./commands/code.md",
+    "./commands/arch.md",
+    "./commands/sec.md",
+    "./commands/doc.md",
+    "./commands/commit.md"
   ]
 }

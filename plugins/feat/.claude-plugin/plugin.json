@@ -9,5 +9,10 @@
     "./agents/design.md",
     "./agents/impl.md",
     "./agents/scaffold.md"
+  ],
+  "commands": [
+    "./commands/design.md",
+    "./commands/impl.md",
+    "./commands/scaffold.md"
   ]
 }
