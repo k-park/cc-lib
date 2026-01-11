@@ -1,5 +1,9 @@
 # User Stories
 
+**Version**: 1.0.0
+**Last Updated**: 2026-01-11
+**Status**: Draft
+
 ## Overview
 
 사용자 페르소나별로 cc-lib가 해결해야 할 핵심 사용자 스토리를 정의합니다.

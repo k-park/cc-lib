@@ -1,55 +1,39 @@
 # Technical Specifications
 
+**Version**: 1.1.0
+**Last Updated**: 2026-01-11
+**Status**: Draft
+
 ## Overview
 
 cc-lib의 기술 사양을 정의합니다.
 
 ## System Architecture
 
-```
-┌─────────────────────────────────────────────────────────────────┐
-│                        cc-lib Architecture                       │
-├─────────────────────────────────────────────────────────────────┤
-│                                                                  │
-│  ┌──────────────────────────────────────────────────────────┐   │
-│  │                    Marketplace Layer                      │   │
-│  │  ┌────────────────────────────────────────────────────┐  │   │
-│  │  │  .claude-plugin/marketplace.json                   │  │   │
-│  │  │  - Plugin catalog                                  │  │   │
-│  │  │  - Metadata                                        │  │   │
-│  │  │  - Source locations                                │  │   │
-│  │  └────────────────────────────────────────────────────┘  │   │
-│  └──────────────────────────────────────────────────────────┘   │
-│                           │                                    │
-│                           ▼                                    │
-│  ┌──────────────────────────────────────────────────────────┐   │
-│  │                    Plugin Layer                          │   │
-│  │  ┌────────────────┐  ┌────────────────┐  ┌────────────┐  │   │
-│  │  │  plugins/      │  │  agents/       │  │ installer/  │  │   │
-│  │  │  (Real files)  │  │  (Symlinks)    │  │ (Build)     │  │   │
-│  │  └────────────────┘  └────────────────┘  └────────────┘  │   │
-│  └──────────────────────────────────────────────────────────┘   │
-│                           │                                    │
-│                           ▼                                    │
-│  ┌──────────────────────────────────────────────────────────┐   │
-│  │                    Output Layer                          │   │
-│  │  ┌────────────────────────────────────────────────────┐  │   │
-│  │  │  output/.claude/agents/                             │  │   │
-│  │  │  - Flat structure                                  │  │   │
-│  │  │  - Resolved symlinks                               │  │   │
-│  │  │  - Copied files                                   │  │   │
-│  │  └────────────────────────────────────────────────────┘  │   │
-│  └──────────────────────────────────────────────────────────┘   │
-│                           │                                    │
-│                           ▼                                    │
-│  ┌──────────────────────────────────────────────────────────┐   │
-│  │                 Claude Code Integration                  │   │
-│  │  - Auto-discovery                                        │   │
-│  │  - Plugin management                                    │   │
-│  │  - Settings.json configuration                          │   │
-│  └──────────────────────────────────────────────────────────┘   │
-│                                                                  │
-└─────────────────────────────────────────────────────────────────┘
+```mermaid
+graph TB
+    subgraph Marketplace ["Marketplace Layer"]
+        MP[".claude-plugin/marketplace.json<br/>- Plugin catalog<br/>- Metadata<br/>- Source locations"]
+    end
+
+    subgraph Plugin ["Plugin Layer"]
+        P["plugins/ (Symlinks to agents/)"]
+        A["agents/ (Real Source Files)"]
+        I["installer/ (Build Tools)"]
+        P -.->|"symlinks"| A
+    end
+
+    subgraph Output ["Output Layer"]
+        OUT["output/.claude/agents/<br/>- Flat structure<br/>- Copied files from agents/"]
+    end
+
+    subgraph Claude ["Claude Code Integration"]
+        C["Auto-discovery<br/>Plugin management<br/>Settings.json"]
+    end
+
+    Marketplace --> Plugin
+    Plugin --> Output
+    Output --> Claude
 ```
 
 ## Directory Structure
@@ -59,27 +43,27 @@ cc-lib/
 ├── .claude-plugin/
 │   └── marketplace.json             # Marketplace catalog
 │
-├── plugins/                         # Plugin source files
+├── plugins/                         # Plugin structure (symlinks to agents/)
 │   └── {plugin-name}/
 │       ├── .claude-plugin/
 │       │   └── plugin.json          # Plugin manifest
-│       ├── agents/                  # Agent definitions (.md)
+│       ├── agents/                  # Symlinks → ../../../agents/{category}/
 │       ├── commands/                # Slash commands (.md)
 │       ├── skills/                  # Skills (SKILL.md)
 │       └── hooks/                   # Hooks configuration
 │
-├── agents/                          # Category symlinks to plugins/
+├── agents/                          # Real agent source files (by category)
 │   └── {category}/
-│       └── *.md → ../../plugins/{plugin}/agents/
+│       └── *.md                     # Real files
 │
 ├── installer/                       # Build & installation tools
 │   ├── cli/
-│   │   └── sync.sh                  # Build script
+│   │   └── sync.sh                  # Build script (copies from agents/)
 │   ├── sets/                        # Installation sets
 │   ├── templates/                   # Settings templates
 │   └── schemas/                     # JSON schemas
 │
-└── output/.claude/agents/           # Build output (gitignored)
+└── output/.claude/agents/           # Build output (gitignored, flat structure)
 ```
 
 ## Data Models

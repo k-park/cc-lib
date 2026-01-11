@@ -1,10 +1,14 @@
 # Functional Requirements
 
+**Version**: 1.0.0
+**Last Updated**: 2026-01-11
+**Status**: Draft
+
 ## Overview
 
 cc-lib의 기능적 요구사항을 정의합니다.
 
-## FR-1: 마켓플레이스 카탈로그
+## FR-1: Marketplace Catalog
 
 | ID | Requirement | Priority |
 |----|-------------|----------|

@@ -1,5 +1,9 @@
 # User Personas
 
+**Version**: 1.0.0
+**Last Updated**: 2026-01-11
+**Status**: Draft
+
 ## Overview
 
 cc-lib는 주로 **Claude Code를 사용하는 개발자들**을 타겟으로 합니다.

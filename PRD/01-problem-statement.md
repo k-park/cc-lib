@@ -1,5 +1,9 @@
 # Problem Statement
 
+**Version**: 1.0.0
+**Last Updated**: 2026-01-11
+**Status**: Draft
+
 ## Current Situation
 
 Claude Code는 강력한 AI 코딩 어시스턴트를 제공하지만, 사용자가 **커스텀 에이전트와 플러그인을 효율적으로 관리하고 공유할 수 있는 중앙화된 생태계**가 부족합니다.

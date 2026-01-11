@@ -1,10 +1,14 @@
 # Acceptance Criteria
 
+**Version**: 1.0.0
+**Last Updated**: 2026-01-11
+**Status**: Draft
+
 ## Overview
 
 각 기능에 대한 수락 기준을 정의합니다. 이는 기능이 완료되었는지 확인하는 데 사용됩니다.
 
-## AC-1: 마켓플레이스 카탈로그
+## AC-1: Marketplace Catalog
 
 ### AC-1.1: marketplace.json 형식 검증
 
