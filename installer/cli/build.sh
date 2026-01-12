@@ -1,44 +1,45 @@
 #!/bin/bash
-# sync.sh - Build agents/ directory to output/.claude/agents/
+# build.sh - Build cc-lib output structure
 #
-# This script builds a flat agent structure from the categorized source files.
+# This script generates the output structure from source files.
 #
 # Directory Structure:
-#   agents/{category}/           - Real source files (by category)
-#   plugins/{name}/agents/       - Symlinks to agents/ (for plugin distribution)
-#   output/.claude/agents/       - Flat build output (gitignored)
+#   agents/{category}/           - Source agent files
+#   plugins/{name}/.claude-plugin/ - Plugin definitions
+#   output/.claude/              - Generated output directory
 #
 # The script:
-#   - Scans agents/ for all .md files (real source files)
-#   - Copies files to output/.claude/agents/ (flat structure)
-#   - Handles both regular files and symbolic links for compatibility
+#   - Scans agents/ for all .md files
+#   - Copies to output/.claude/agents/ (flat structure)
+#   - Generates output/.claude/settings.json with absolute paths
 #
 # Usage:
-#   ./installer/cli/sync.sh
+#   ./installer/cli/build.sh
 #
 # Output:
-#   Creates output/.claude/agents/ with all agent definitions in a flat structure
-#   Ready for deployment to .claude/agents/ or distribution via marketplace
+#   output/.claude/agents/       - Flat agent definitions
+#   output/.claude/settings.json - Settings with absolute paths
 
 set -e
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_ROOT="$(cd "$SCRIPT_DIR/../.." && pwd)"
 AGENTS_DIR="$PROJECT_ROOT/agents"
-OUTPUT_DIR="$PROJECT_ROOT/output/.claude/agents"
+OUTPUT_DIR="$PROJECT_ROOT/output/.claude"
+OUTPUT_AGENTS_DIR="$OUTPUT_DIR/agents"
 
 echo "=========================================="
-echo "  cc-lib Agent Build Script"
+echo "  cc-lib Build"
 echo "=========================================="
 echo "Source: $AGENTS_DIR"
 echo "Output: $OUTPUT_DIR"
 echo
 
 # Ensure output directory exists first (idempotent: create if needed)
-mkdir -p "$OUTPUT_DIR"
+mkdir -p "$OUTPUT_AGENTS_DIR"
 
-# Clear output directory contents (now safe since directory exists)
-rm -rf "$OUTPUT_DIR"/*
+# Clear agents output directory (now safe since directory exists)
+rm -rf "$OUTPUT_AGENTS_DIR"/*
 
 # Counter for statistics
 total_files=0
@@ -61,7 +62,7 @@ while IFS= read -r -d '' source_file; do
 
         if [ -f "$target_file" ]; then
             # Copy the target file
-            cp "$target_file" "$OUTPUT_DIR/$filename"
+            cp "$target_file" "$OUTPUT_AGENTS_DIR/$filename"
             echo "  → Resolved symlink and copied: $filename"
             copied_files=$((copied_files + 1))
         else
@@ -70,11 +71,32 @@ while IFS= read -r -d '' source_file; do
         fi
     else
         # Regular file, copy as-is
-        cp "$source_file" "$OUTPUT_DIR/$filename"
+        cp "$source_file" "$OUTPUT_AGENTS_DIR/$filename"
         echo "  → Copied: $filename"
         copied_files=$((copied_files + 1))
     fi
 done < <(find "$AGENTS_DIR" -name "*.md" -print0)
+
+# Generate settings.json with absolute paths for local marketplace and plugins
+SETTINGS_FILE="$OUTPUT_DIR/settings.json"
+
+echo
+echo "Generating settings.json..."
+
+# Create settings.json with absolute paths using jq for proper formatting
+jq -n \
+  --arg marketplaces "$PROJECT_ROOT/.claude-plugin/marketplace.json" \
+  --args \
+  '{
+    version: "1.0",
+    marketplaces: [$marketplaces],
+    plugins: [. as $plugins | $ARGS.positional[]
+      | select(. != "")
+    ]
+  }' \
+  "$PROJECT_ROOT"/plugins/*/.claude-plugin > "$SETTINGS_FILE"
+
+echo "  → Created: $SETTINGS_FILE"
 
 echo
 echo "=========================================="
@@ -87,7 +109,5 @@ echo "  Total files found: $total_files"
 echo "  Files copied: $copied_files"
 echo "  Files skipped (broken symlinks): $skipped_files"
 echo
-echo "To deploy to your project:"
-echo "  cp -r output/.claude/agents/ ~/.claude/agents/"
-echo
+echo "Generated files:"
 ls -la "$OUTPUT_DIR"
