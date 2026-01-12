@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Documentation agents for generating docs, README files, and explaining code",
   "author": {
-    "name": "cc-lib"
+    "name": "k-park"
   },
   "agents": [
     "./agents/gen.md",

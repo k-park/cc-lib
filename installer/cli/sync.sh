@@ -34,12 +34,11 @@ echo "Source: $AGENTS_DIR"
 echo "Output: $OUTPUT_DIR"
 echo
 
-# Ensure output directory exists
+# Ensure output directory exists first (idempotent: create if needed)
 mkdir -p "$OUTPUT_DIR"
 
-# Clear output directory
+# Clear output directory contents (now safe since directory exists)
 rm -rf "$OUTPUT_DIR"/*
-mkdir -p "$OUTPUT_DIR"
 
 # Counter for statistics
 total_files=0
@@ -47,7 +46,8 @@ copied_files=0
 skipped_files=0
 
 # Process all .md files in agents/ directory tree
-find "$AGENTS_DIR" -name "*.md" -print0 | while IFS= read -r -d '' source_file; do
+# Using process substitution to avoid subshell and keep variables
+while IFS= read -r -d '' source_file; do
     # Get the filename (without path)
     filename=$(basename "$source_file")
     total_files=$((total_files + 1))
@@ -74,13 +74,18 @@ find "$AGENTS_DIR" -name "*.md" -print0 | while IFS= read -r -d '' source_file; 
         echo "  → Copied: $filename"
         copied_files=$((copied_files + 1))
     fi
-done
+done < <(find "$AGENTS_DIR" -name "*.md" -print0)
 
 echo
 echo "=========================================="
 echo "  ✓ Build Complete!"
 echo "=========================================="
 echo "Output directory: $OUTPUT_DIR"
+echo
+echo "Statistics:"
+echo "  Total files found: $total_files"
+echo "  Files copied: $copied_files"
+echo "  Files skipped (broken symlinks): $skipped_files"
 echo
 echo "To deploy to your project:"
 echo "  cp -r output/.claude/agents/ ~/.claude/agents/"

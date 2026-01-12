@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Test generation, execution, and failure resolution with complete test-fix loop support",
   "author": {
-    "name": "cc-lib"
+    "name": "k-park"
   },
   "agents": [
     "./agents/gen.md",

@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Code review plugins for quality, security, architecture, and documentation assessment",
   "author": {
-    "name": "cc-lib"
+    "name": "k-park"
   },
   "agents": [
     "./agents/code.md",

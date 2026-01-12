@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Refactoring and debugging agents for code cleaning and bug fixing",
   "author": {
-    "name": "cc-lib"
+    "name": "k-park"
   },
   "agents": [
     "./agents/clean.md",
