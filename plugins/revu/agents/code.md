@@ -1,1 +1,1 @@
-../../../agents/review/code.md
+../../../agents/reviews/code.md

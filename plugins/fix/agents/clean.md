@@ -1,1 +1,1 @@
-../../../agents/fix/clean.md
+../../../agents/debugging/clean.md

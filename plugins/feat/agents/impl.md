@@ -1,1 +1,1 @@
-../../../agents/feat/impl.md
+../../../agents/feature/impl.md

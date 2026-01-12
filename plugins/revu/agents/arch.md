@@ -1,1 +1,1 @@
-../../../agents/review/arch.md
+../../../agents/reviews/arch.md

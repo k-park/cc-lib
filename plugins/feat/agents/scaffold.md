@@ -1,1 +1,1 @@
-../../../agents/feat/scaffold.md
+../../../agents/feature/scaffold.md

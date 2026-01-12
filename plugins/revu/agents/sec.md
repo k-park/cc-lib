@@ -1,1 +1,1 @@
-../../../agents/review/sec.md
+../../../agents/reviews/sec.md

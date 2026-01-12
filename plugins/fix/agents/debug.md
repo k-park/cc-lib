@@ -1,1 +1,1 @@
-../../../agents/fix/debug.md
+../../../agents/debugging/debug.md

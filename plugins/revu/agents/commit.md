@@ -1,1 +1,1 @@
-../../../agents/review/commit.md
+../../../agents/reviews/commit.md

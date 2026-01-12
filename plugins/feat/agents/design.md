@@ -1,1 +1,1 @@
-../../../agents/feat/design.md
+../../../agents/feature/design.md

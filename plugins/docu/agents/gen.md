@@ -1,1 +1,1 @@
-../../../agents/docu/gen.md
+../../../agents/documentation/gen.md
