@@ -20,7 +20,7 @@
 #   output/.claude/agents/       - Flat agent definitions
 #   output/.claude/settings.json - Settings with absolute paths
 
-set -e
+set -eu
 
 # ============================================================================
 # CONFIGURATION
@@ -37,6 +37,39 @@ readonly MARKETPLACE_FILE="$PROJECT_ROOT/.claude-plugin/marketplace.json"
 # ============================================================================
 # FUNCTIONS
 # ============================================================================
+
+# Validate required directories exist
+validate_prerequisites() {
+    local errors=0
+
+    if [ ! -d "$AGENTS_DIR" ]; then
+        echo "Error: Agents directory not found: $AGENTS_DIR" >&2
+        errors=$((errors + 1))
+    fi
+
+    if [ ! -d "$PLUGINS_DIR" ]; then
+        echo "Error: Plugins directory not found: $PLUGINS_DIR" >&2
+        errors=$((errors + 1))
+    fi
+
+    if [ ! -f "$MARKETPLACE_FILE" ]; then
+        echo "Error: Marketplace file not found: $MARKETPLACE_FILE" >&2
+        errors=$((errors + 1))
+    fi
+
+    if [ $errors -gt 0 ]; then
+        echo "Error: $errors prerequisite(s) failed. Aborting." >&2
+        exit 1
+    fi
+}
+
+# Cleanup handler for interrupts
+cleanup_on_interrupt() {
+    local exit_code=$?
+    echo
+    echo "Build interrupted (exit code: $exit_code)"
+    exit ${exit_code:-130}
+}
 
 # Print header with title
 print_header() {
@@ -82,12 +115,11 @@ process_agent_file() {
 }
 
 # Generate settings.json with absolute paths
-# Args: project_root, plugins_dir, marketplace_file, output_file
+# Args: plugins_dir, marketplace_file, output_file
 generate_settings_file() {
-    local project_root="$1"
-    local plugins_dir="$2"
-    local marketplace_file="$3"
-    local output_file="$4"
+    local plugins_dir="$1"
+    local marketplace_file="$2"
+    local output_file="$3"
 
     jq -n \
         --arg marketplaces "$marketplace_file" \
@@ -121,6 +153,12 @@ print_statistics() {
 
 # Main execution
 main() {
+    # Set up interrupt handler
+    trap cleanup_on_interrupt INT
+
+    # Validate prerequisites
+    validate_prerequisites
+
     print_header "cc-lib Build"
     print_info "Source: $AGENTS_DIR"
     print_info "Output: $OUTPUT_DIR"
@@ -153,7 +191,7 @@ main() {
     local settings_file="$OUTPUT_DIR/settings.json"
     echo
     echo "Generating settings.json..."
-    generate_settings_file "$PROJECT_ROOT" "$PLUGINS_DIR" "$MARKETPLACE_FILE" "$settings_file"
+    generate_settings_file "$PLUGINS_DIR" "$MARKETPLACE_FILE" "$settings_file"
     echo "  → Created: $settings_file"
 
     # Print completion
