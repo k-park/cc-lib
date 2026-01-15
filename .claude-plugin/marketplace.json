@@ -11,7 +11,7 @@
   "plugins": [
     {
       "name": "orch",
-      "source": "./plugins/orchestration",
+      "source": "./plugins/orch",
       "description": "Agent orchestration for complex multi-faceted tasks with parallel execution and context management",
       "version": "1.0.0",
       "author": {
@@ -24,7 +24,7 @@
     },
     {
       "name": "test",
-      "source": "./plugins/testing",
+      "source": "./plugins/test",
       "description": "Test generation, execution, and failure resolution with complete test-fix loop support",
       "version": "1.0.0",
       "author": {
