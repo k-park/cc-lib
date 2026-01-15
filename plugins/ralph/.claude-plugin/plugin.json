@@ -1,6 +1,6 @@
 {
   "name": "ralph",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Autonomous iterative development loop - RALPH (Recursively Adaptive Loop for Progressive Habitability). Keep Claude Code working until completion.",
   "author": {
     "name": "cc-lib"

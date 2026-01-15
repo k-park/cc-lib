@@ -13,7 +13,7 @@
       "name": "orch",
       "source": "./plugins/orch",
       "description": "Agent orchestration for complex multi-faceted tasks with parallel execution and context management",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "author": {
         "name": "k-park"
       },
@@ -26,7 +26,7 @@
       "name": "test",
       "source": "./plugins/test",
       "description": "Test generation, execution, and failure resolution with complete test-fix loop support",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "author": {
         "name": "k-park"
       },
@@ -39,7 +39,7 @@
       "name": "ralph",
       "source": "./plugins/ralph",
       "description": "Autonomous iterative development loop - RALPH (Recursively Adaptive Loop for Progressive Habitability)",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "author": {
         "name": "k-park"
       },
@@ -52,7 +52,7 @@
       "name": "revu",
       "source": "./plugins/revu",
       "description": "Code review plugins for quality, security, architecture, documentation, and commit message assessment",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "author": {
         "name": "k-park"
       },
@@ -65,7 +65,7 @@
       "name": "feat",
       "source": "./plugins/feat",
       "description": "Feature development agents for design, implementation planning, and scaffolding",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "author": {
         "name": "k-park"
       },
@@ -78,7 +78,7 @@
       "name": "docu",
       "source": "./plugins/docu",
       "description": "Documentation agents for generating docs, README files, and explaining code",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "author": {
         "name": "k-park"
       },
@@ -91,7 +91,7 @@
       "name": "fix",
       "source": "./plugins/fix",
       "description": "Refactoring and debugging agents for code cleaning and bug fixing",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "author": {
         "name": "k-park"
       },
