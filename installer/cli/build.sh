@@ -14,7 +14,11 @@
 #   - Generates output/.claude/settings.json with absolute paths
 #
 # Usage:
-#   ./installer/cli/build.sh
+#   ./installer/cli/build.sh [options]
+#
+# Options:
+#   --dry-run, -n    Show what would be done without making changes
+#   --verbose, -v    Enable verbose output for debugging
 #
 # Output:
 #   output/.claude/agents/       - Flat agent definitions
@@ -25,6 +29,35 @@ set -eu
 # ============================================================================
 # CONFIGURATION
 # ============================================================================
+
+# Parse command line arguments
+DRY_RUN=false
+VERBOSE=false
+
+while [[ $# -gt 0 ]]; do
+    case $1 in
+        --dry-run|-n)
+            DRY_RUN=true
+            shift
+            ;;
+        --verbose|-v)
+            VERBOSE=true
+            shift
+            ;;
+        --help|-h)
+            echo "Usage: $0 [--dry-run] [--verbose]"
+            echo "  --dry-run, -n    Show what would be done without making changes"
+            echo "  --verbose, -v    Enable verbose output for debugging"
+            echo "  --help, -h       Show this help message"
+            exit 0
+            ;;
+        *)
+            echo "Error: Unknown option: $1" >&2
+            echo "Use --help for usage information" >&2
+            exit 1
+            ;;
+    esac
+done
 
 readonly SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 readonly PROJECT_ROOT="$(cd "$SCRIPT_DIR/../.." && pwd)"
@@ -41,6 +74,12 @@ readonly MARKETPLACE_FILE="$PROJECT_ROOT/.claude-plugin/marketplace.json"
 # Validate required directories exist
 validate_prerequisites() {
     local errors=0
+
+    # Check required commands
+    if ! command -v jq >/dev/null 2>&1; then
+        echo "Error: Required command 'jq' not found. Please install jq." >&2
+        errors=$((errors + 1))
+    fi
 
     if [ ! -d "$AGENTS_DIR" ]; then
         echo "Error: Agents directory not found: $AGENTS_DIR" >&2
@@ -67,8 +106,21 @@ validate_prerequisites() {
 cleanup_on_interrupt() {
     local exit_code=$?
     echo
-    echo "Build interrupted (exit code: $exit_code)"
-    exit ${exit_code:-130}
+
+    if [ $exit_code -eq 0 ]; then
+        echo "Build interrupted"
+        exit 130  # SIGINT standard exit code
+    else
+        echo "Build failed (exit code: $exit_code)"
+
+        # Clean up partial output if directory exists and has files
+        if [ -d "$OUTPUT_AGENTS_DIR" ] && [ -n "$(ls -A "$OUTPUT_AGENTS_DIR" 2>/dev/null)" ]; then
+            echo "Cleaning up partial output..."
+            rm -rf "$OUTPUT_AGENTS_DIR"/*
+        fi
+
+        exit $exit_code
+    fi
 }
 
 # Print header with title
@@ -84,6 +136,13 @@ print_info() {
     echo "$@"
 }
 
+# Log debug messages (only when VERBOSE=true)
+log_debug() {
+    if [ "$VERBOSE" = "true" ]; then
+        echo "[DEBUG] $*" >&2
+    fi
+}
+
 # Process a single agent file (handles both regular files and symlinks)
 # Args: source_file, output_dir
 # Returns: 0 on success, 1 on failure (broken symlink)
@@ -93,6 +152,13 @@ process_agent_file() {
     local filename
     filename=$(basename "$source_file")
 
+    log_debug "Processing file: $source_file"
+
+    if [ "$DRY_RUN" = "true" ]; then
+        echo "  [DRY RUN] Would copy: $filename"
+        return 0
+    fi
+
     if [ -L "$source_file" ]; then
         # Resolve and copy symlink target
         local target_file
@@ -101,6 +167,7 @@ process_agent_file() {
         if [ -f "$target_file" ]; then
             cp "$target_file" "$output_dir/$filename"
             echo "  → Resolved symlink and copied: $filename"
+            log_debug "  Symlink target: $target_file"
             return 0
         else
             echo "  ⚠ Warning: Broken symlink, skipping: $filename"
@@ -162,13 +229,24 @@ main() {
     print_header "cc-lib Build"
     print_info "Source: $AGENTS_DIR"
     print_info "Output: $OUTPUT_DIR"
+
+    if [ "$DRY_RUN" = "true" ]; then
+        print_info "Mode: DRY RUN (no changes will be made)"
+    fi
+
+    if [ "$VERBOSE" = "true" ]; then
+        print_info "Mode: VERBOSE (debug output enabled)"
+    fi
+
     echo
 
     # Ensure output directory exists first (idempotent: create if needed)
-    mkdir -p "$OUTPUT_AGENTS_DIR"
+    if [ "$DRY_RUN" = "false" ]; then
+        mkdir -p "$OUTPUT_AGENTS_DIR"
 
-    # Clear agents output directory (now safe since directory exists)
-    rm -rf "$OUTPUT_AGENTS_DIR"/*
+        # Clear agents output directory (now safe since directory exists)
+        rm -rf "$OUTPUT_AGENTS_DIR"/*
+    fi
 
     # Counter for statistics
     local total_files=0
@@ -190,9 +268,15 @@ main() {
     # Generate settings.json
     local settings_file="$OUTPUT_DIR/settings.json"
     echo
-    echo "Generating settings.json..."
-    generate_settings_file "$PLUGINS_DIR" "$MARKETPLACE_FILE" "$settings_file"
-    echo "  → Created: $settings_file"
+    if [ "$DRY_RUN" = "true" ]; then
+        echo "[DRY RUN] Would generate: $settings_file"
+        log_debug "Plugins dir: $PLUGINS_DIR"
+        log_debug "Marketplace file: $MARKETPLACE_FILE"
+    else
+        echo "Generating settings.json..."
+        generate_settings_file "$PLUGINS_DIR" "$MARKETPLACE_FILE" "$settings_file"
+        echo "  → Created: $settings_file"
+    fi
 
     # Print completion
     print_header "✓ Build Complete!"
