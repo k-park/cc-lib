@@ -1,9 +1,9 @@
 {
   "name": "ralph",
-  "version": "1.0.1",
-  "description": "Autonomous iterative development loop - RALPH (Recursively Adaptive Loop for Progressive Habitability). Keep Claude Code working until completion.",
+  "version": "1.1.0",
+  "description": "Autonomous iterative development loop - RALPH (Recursively Adaptive Loop for Progressive Habitability) based on Geoff Huntley's Ralph Wiggum Loop methodology. Includes context management, test integration, and engineering safeguards.",
   "author": {
-    "name": "cc-lib"
+    "name": "k-park"
   },
   "commands": [
     "./commands/go.md",

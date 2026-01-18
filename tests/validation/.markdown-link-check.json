@@ -1,0 +1,21 @@
+{
+  "ignorePatterns": [
+    {
+      "pattern": "^http://localhost",
+      "comment": "Ignore localhost links"
+    },
+    {
+      "pattern": "^http://127.0.0.1",
+      "comment": "Ignore 127.0.0.1 links"
+    },
+    {
+      "pattern": "^#",
+      "comment": "Ignore page anchor links"
+    }
+  ],
+  "timeout": "10s",
+  "retryOn429": true,
+  "retryCount": 2,
+  "fallbackRetryDelay": "30s",
+  "aliveStatusCodes": [200, 206, 301, 302, 303, 307, 308]
+}
