@@ -172,29 +172,29 @@ claude plugin uninstall <plugin>@cc-lib
 @agent-orch-parallel "Run these tasks in parallel"
 
 # Testing
-@agent-test-gen "Generate tests for auth module"
-@agent-test-run "Execute all tests"
-@agent-test-fix "Fix failing tests"
+@agent-test:gen "Generate tests for auth module"
+@agent-test:run "Execute all tests"
+@agent-test:fix "Fix failing tests"
 
 # Review
 @agent-revu-code "Review this PR"
-@agent-review-arch "Review system architecture"
-@agent-review-sec "Security review"
-@agent-review-commit "Check commit message"
+@agent-revu:arch "Review system architecture"
+@agent-revu:sec "Security review"
+@agent-revu:commit "Check commit message"
 
 # Feature Development
-@agent-feat-design "Design user auth feature"
-@agent-feat-impl "Create implementation plan"
-@agent-feat-scaffold "Scaffold new project"
+@agent-feat:design "Design user auth feature"
+@agent-feat:impl "Create implementation plan"
+@agent-feat:scaffold "Scaffold new project"
 
 # Documentation
-@agent-docu-gen "Generate API docs"
-@agent-docu-readme "Create README"
-@agent-docu-explain "Explain this code"
+@agent-docu:gen "Generate API docs"
+@agent-docu:readme "Create README"
+@agent-docu:explain "Explain this code"
 
 # Refactoring & Debugging
-@agent-fix-clean "Refactor this module"
-@agent-fix-debug "Debug this error"
+@agent-fix:clean "Refactor this module"
+@agent-fix:debug "Debug this error"
 ```
 
 ---

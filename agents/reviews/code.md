@@ -1,5 +1,5 @@
 ---
-name: review-code
+name: code
 description: Code review expert. Use proactively when code quality, style, best practices, or potential bugs need review. Analyzes code for issues, security vulnerabilities, performance concerns, and maintainability.
 model: opus
 color: yellow

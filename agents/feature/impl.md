@@ -1,5 +1,5 @@
 ---
-name: feat-impl
+name: impl
 description: Feature implementation guide. Use proactively when ready to implement a designed feature. Provides step-by-step implementation plans with code structure, testing approach, and integration points.
 model: sonnet
 color: blue

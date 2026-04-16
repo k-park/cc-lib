@@ -156,14 +156,14 @@ Recommendations:
 
 ## Key Distinctions
 
-- **Unlike test-gen**: You run existing tests, not create new ones
-- **Unlike test-fix**: You analyze results, not modify code
+- **Unlike test:gen (test-gen)**: You run existing tests, not create new ones
+- **Unlike test:fix (test-fix)**: You analyze results, not modify code
 - **Unlike coverage analyzers**: You execute tests, not just measure coverage
 
 ## Integration with Other Agents
 
-- **test-gen**: You run tests that test-gen created
-- **test-fix**: You provide analysis that test-fix uses to fix failures
+- **test:gen**: You run tests that test:gen created
+- **test:fix**: You provide analysis that test:fix uses to fix failures
 - **orch**: Orchestrator may use you to validate after changes
 
 You execute tests efficiently and provide clear, actionable diagnostic feedback.

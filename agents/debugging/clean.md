@@ -1,5 +1,5 @@
 ---
-name: fix-clean
+name: clean
 description: Code cleaning specialist. Use proactively when refactoring code for clarity, removing technical debt, eliminating code smells, or improving maintainability without changing functionality.
 model: sonnet
 color: purple

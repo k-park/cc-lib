@@ -1,5 +1,5 @@
 ---
-name: review-doc
+name: doc
 description: Documentation review expert. Use proactively when evaluating code documentation, README files, API documentation, or technical writing quality. Analyzes for completeness, clarity, accuracy, and maintainability.
 model: sonnet
 color: yellow
