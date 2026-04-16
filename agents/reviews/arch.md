@@ -1,5 +1,5 @@
 ---
-name: review-arch
+name: arch
 description: Architecture review expert. Use proactively when evaluating system design, architectural patterns, module boundaries, dependencies, or structural decisions. Analyzes for scalability, maintainability, and adherence to SOLID principles.
 model: opus
 color: yellow

@@ -1,5 +1,5 @@
 ---
-name: review-sec
+name: sec
 description: Security review expert. Use proactively when reviewing code for security vulnerabilities, authentication/authorization issues, data exposure, or compliance with OWASP Top 10 and security best practices.
 model: opus
 color: yellow

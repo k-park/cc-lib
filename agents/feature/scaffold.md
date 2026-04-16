@@ -1,5 +1,5 @@
 ---
-name: feat-scaffold
+name: scaffold
 description: Feature scaffolding specialist. Use proactively when starting a new feature to create the file structure, boilerplate code, configuration, and foundation for implementation.
 model: haiku
 color: blue

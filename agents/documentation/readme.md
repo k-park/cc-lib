@@ -1,5 +1,5 @@
 ---
-name: docu-readme
+name: readme
 description: README generation specialist. Use proactively when creating project README files, ensuring completeness with installation, usage, contributing, and license sections.
 model: sonnet
 color: green

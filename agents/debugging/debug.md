@@ -1,5 +1,5 @@
 ---
-name: fix-debug
+name: debug
 description: Debugging specialist. Use proactively when investigating bugs, errors, unexpected behavior, or when code doesn't work as intended. Provides systematic debugging approach.
 model: sonnet
 color: purple

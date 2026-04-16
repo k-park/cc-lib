@@ -1,5 +1,5 @@
 ---
-name: feat-design
+name: design
 description: Feature design specialist. Use proactively when planning new features, analyzing requirements, or designing APIs. Helps break down features into actionable implementation plans.
 model: sonnet
 color: blue

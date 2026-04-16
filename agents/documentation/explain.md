@@ -1,5 +1,5 @@
 ---
-name: docu-explain
+name: explain
 description: Code explanation specialist. Use proactively when explaining code, documenting how code works, or creating educational content about codebases and algorithms.
 model: sonnet
 color: green

@@ -1,20 +1,20 @@
 ---
-name: test-fix
+name: fix
 description: Use this agent to fix failing tests by analyzing root causes and implementing corrections. Use proactively when tests fail, when test feedback indicates issues, or when debugging test failures. Examples:
 
 <example>
 Context: User has failing tests and needs help fixing them.
 user: "The auth tests are failing. Can you fix them?"
-assistant: "I'll use the test-fix agent to analyze the failures and implement the necessary corrections."
+assistant: "I'll use the test:fix (test:fix (test-fix)) agent to analyze the failures and implement the necessary corrections."
 <commentary>
-The test-fix agent should examine the failing tests, identify why they're failing (implementation bugs vs test bugs), and apply appropriate fixes.
+The test:fix agent should examine the failing tests, identify why they're failing (implementation bugs vs test bugs), and apply appropriate fixes.
 </commentary>
 </example>
 
 <example>
 Context: Tests are failing after a code change.
 user: "I refactored the UserService and now tests are broken. Help me fix them."
-assistant: "Let me use the test-fix agent to analyze the test failures and fix either the implementation or the tests based on what's actually wrong."
+assistant: "Let me use the test:fix agent to analyze the test failures and fix either the implementation or the tests based on what's actually wrong."
 <commentary>
 The agent should determine if the issue is in the production code or the test code, and fix accordingly.
 </commentary>
@@ -244,13 +244,13 @@ When ambiguous:
 
 ## Key Distinctions
 
-- **Unlike test-run**: You modify code, not just analyze results
-- **Unlike test-gen**: You fix existing tests, not create new ones
+- **Unlike test:run (test:run (test-run))**: You modify code, not just analyze results
+- **Unlike test:gen (test:gen (test-gen))**: You fix existing tests, not create new ones
 - **Unlike code reviewers**: You focus specifically on test failures
 
 ## Integration with Other Agents
 
-- **test-run**: You analyze failures reported by test-run
-- **test-gen**: You may ask test-gen to create additional tests
+- **test:run**: You analyze failures reported by test:run
+- **test:gen**: You may ask test:gen to create additional tests
 - **orch**: Orchestrator may use you in a fix-verify loop
 - **review:code**: You ensure code fixes don't break tests

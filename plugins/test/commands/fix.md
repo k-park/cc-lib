@@ -225,8 +225,8 @@ When ambiguous:
 
 ## Key Distinctions
 
-- **Unlike test-run**: You modify code, not just analyze results
-- **Unlike test-gen**: You fix existing tests, not create new ones
+- **Unlike test:run (test-run)**: You modify code, not just analyze results
+- **Unlike test:gen (test-gen)**: You fix existing tests, not create new ones
 - **Unlike code reviewers**: You focus specifically on test failures
 
 ## Integration with Other Commands

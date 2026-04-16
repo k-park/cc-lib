@@ -1,5 +1,5 @@
 ---
-name: review-commit
+name: commit
 description: Commit message generation and review expert. Use proactively when creating commits, reviewing commit messages, or ensuring conventional commit format compliance.
 model: sonnet
 color: yellow

@@ -1,20 +1,20 @@
 ---
-name: test-gen
+name: gen
 description: Use this agent to generate comprehensive tests for code, APIs, or features. Use proactively when writing tests, adding test coverage, or creating test suites. Examples:
 
 <example>
 Context: User has implemented a new authentication module.
 user: "Generate tests for the JWT authentication module"
-assistant: "I'll use the test-gen agent to create comprehensive unit and integration tests for the JWT authentication."
+assistant: "I'll use the test:gen (test:gen (test-gen)) agent to create comprehensive unit and integration tests for the JWT authentication."
 <commentary>
-The test-gen agent should analyze the authentication code, identify test scenarios (happy paths, edge cases, error conditions), and generate well-structured tests with proper fixtures and mocks.
+The test:gen agent should analyze the authentication code, identify test scenarios (happy paths, edge cases, error conditions), and generate well-structured tests with proper fixtures and mocks.
 </commentary>
 </example>
 
 <example>
 Context: User needs to add tests for existing untested code.
 user: "Add tests for the UserService class - it has methods for create, update, delete, and find users"
-assistant: "Let me use the test-gen agent to create comprehensive tests covering all UserService methods with edge cases."
+assistant: "Let me use the test:gen agent to create comprehensive tests covering all UserService methods with edge cases."
 <commentary>
 The agent should generate tests for each method, including validation tests, error scenarios, and boundary conditions.
 </commentary>

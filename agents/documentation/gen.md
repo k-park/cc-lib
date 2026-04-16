@@ -1,5 +1,5 @@
 ---
-name: docu-gen
+name: gen
 description: Documentation generation specialist. Use proactively when generating API docs, writing technical documentation, or creating comprehensive documentation for code/features.
 model: sonnet
 color: green
