@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+### Version
+
+- Marketplace metadata 를 `2.3.1` 로 올리고, `docu`, `feat`, `fix`, `orch`, `revu`, `test` 플러그인을 `1.0.3` 으로 올렸다.
+
 ### BREAKING CHANGE: agent frontmatter `name` 정규화
 
 plugin agent 프론트매터 `name` 을 파일명(= sub-name)과 일치시켜 Claude Code 가 노출하는 식별자를 `{plugin}:{sub}` 로 통일했다. 기존에는 commands 는 `{plugin}:{sub}` 였지만 agents 는 `docu-gen`, `review-code`, `task-orchestrator` 등 하이픈/임의 네이밍이라 실제 호출 식별자가 `docu:docu-gen`, `revu:review-code`, `orch:task-orchestrator` 로 불일치했다.

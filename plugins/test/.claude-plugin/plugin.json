@@ -1,6 +1,6 @@
 {
   "name": "test",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Test generation, execution, and failure resolution with complete test-fix loop support",
   "author": {
     "name": "k-park"

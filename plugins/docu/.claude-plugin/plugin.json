@@ -1,6 +1,6 @@
 {
   "name": "docu",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Documentation agents for generating docs, README files, and explaining code",
   "author": {
     "name": "k-park"

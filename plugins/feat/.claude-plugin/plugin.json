@@ -1,6 +1,6 @@
 {
   "name": "feat",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Feature development agents for design, implementation planning, and scaffolding",
   "author": {
     "name": "k-park"
